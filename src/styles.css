@@ -1,4 +1,5 @@
 .loader {
+  margin-top: 50px;
   width: 48px;
   height: 48px;
   border: 5px solid #fff;
@@ -18,11 +19,6 @@
   }
 }
 
-.selection {
-  min-height: 20px;
-  min-width: 125px;
-}
-
-.breeds-div {
-  padding: 20px 50px 0 50px;
+.loading {
+  display: inline-block;
 }
