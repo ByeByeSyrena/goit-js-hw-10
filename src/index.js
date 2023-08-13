@@ -93,12 +93,19 @@ import { fetchBreeds, fetchCatByBreed } from './cat-api';
 
 // ***********************************************************************************************
 
-  let breedNamesArray = [];
+const refs = {
+  body: document.querySelector("body"),
+  select: document.getElementById("breed-select"),
+}
+
+  let breedNamesArray = [{ text: 'Choose your sweety boo-boo', value: '', 'data-placeholder': 'true' }];
 
   const slimSelect = new SlimSelect({
     select: '#breed-select',
     data: breedNamesArray,
-  });
+    placeholder: true,
+  }
+  );
 
 fetchBreeds()
   .then(data => {
