@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const loader = document.querySelector('.loader');
    const errorElement = document.querySelector('.error');
 
-  // Initialize the SlimSelect instance
   const slimSelect = new SlimSelect({
     select: breedSelect,
     placeholder: 'Select a breed',
@@ -59,14 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
     allowDeselect: true,
   });
 
-  // Fetch and populate breed options
   fetchBreeds()
     .then(data => {
       const breedOptions = data.map(item => ({ value: item.id, text: item.name }));
       breedOptions.unshift({ value: '', text: 'Select a breed', 'data-placeholder': 'true' }); // Add the placeholder option
       slimSelect.setData(breedOptions);
 
-      // Hide the loader after fetching breed data
       loader.style.display = 'none';
       breedSelect.style.display = 'block';
     })
@@ -77,17 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
       loader.style.display = 'none';
     });
 
-  // Add event listener to the SlimSelect instance
   breedSelect.addEventListener('change', () => {
     const selectedOption = breedSelect.options[breedSelect.selectedIndex];
     const breedId = selectedOption.value;
 
-    // Show loader
     loader.style.display = 'inline-block';
 
     fetchCatByBreed(breedId)
       .then(catData => {
-        // Update cat info in the div.cat-info block
         catInfoDiv.innerHTML = `
           <img src="${catData.url}" alt="Cat Image" height="300" width="300">
           <p><strong>Breed:</strong> ${catData.breeds[0].name}</p>
