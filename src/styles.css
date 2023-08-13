@@ -22,3 +22,8 @@
 .loading {
   display: inline-block;
 }
+
+.error {
+  display: none;
+  color: red;
+}
